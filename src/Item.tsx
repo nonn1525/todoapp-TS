@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
+import {Todos} from './Interface';
 
-interface ItemProps {content: string};
-const Item = ({content}: ItemProps) => {
+type ItemProps = {
+    content: string;
+};
+const Item: FC<ItemProps> = ({content}) => {
     const [isDone, setIsDone] = useState<boolean>(false);
     return (
         <li>
