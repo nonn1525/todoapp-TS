@@ -1,10 +1,10 @@
 import React from 'react'
 import Item from './Item'
 
-const List = () => {
+const List = ({todos}: string) => {
     return (
         <ul>
-          <Item />
+          <Item content = {todos} />
         </ul>
     )
 }
