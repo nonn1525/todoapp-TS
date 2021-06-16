@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react'
+import { useState, FC, FormEvent } from 'react'
 import {Todos} from './Interface'
 
 type FormProps = {
@@ -8,26 +8,20 @@ type FormProps = {
 
 const Form: FC<FormProps> = ({todos, setTodos}) => {
     const [value, setValue] = useState<string>('');
-    // React.FormEvent<HTMLFormElement>
-    const handleSubmit = (e: any): void => {
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void=> {
         e.preventDefault();
-        setTodos({
-            ...todos,
-            {
-                content: value,
-                // 1 個の引数が必要ですが、2 個指定されました。
-            }
-        });
-        console.log(value)
+        setTodos([...todos,{content: value}]);
     }
     return (
-        <form onSubmit = {(handleSubmit())}>
+        <form onSubmit = {(e)=>handleSubmit(e)}>
             <input type='text' 
                 onChange={e => {
                     setValue(e.target.value);
                 }}
             />
             <button type='submit'>Submit</button>
+            {/* <input type='submit'/> */}
         </form>
     )
 }
