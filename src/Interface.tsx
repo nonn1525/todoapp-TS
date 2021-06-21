@@ -1,5 +1,6 @@
 export interface Todos {
   content: string;
+  id: string;
 }
 
 // export type onChangeProps = {
