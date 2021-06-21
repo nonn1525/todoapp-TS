@@ -2,16 +2,15 @@ import { useState, FC, FormEvent } from 'react'
 import {Todos} from './Interface'
 
 type FormProps = {
-    todos: Todos[]
-    setTodos: React.Dispatch<React.SetStateAction<Todos[]>>
+   addTodo: (content: string) => void;
 }
 
-const Form: FC<FormProps> = ({todos, setTodos}) => {
+const Form: FC<FormProps> = ({addTodo}) => {
     const [value, setValue] = useState<string>('');
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void=> {
         e.preventDefault();
-        setTodos([...todos,{content: value}]);
+        addTodo(value);
     }
     return (
         <form onSubmit = {(e)=>handleSubmit(e)}>

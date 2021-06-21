@@ -4,15 +4,16 @@ import {Todos} from './Interface'
 
 type ListProps = {
   todos: Todos[],
+  deleteTodo: (id: string) => void;
 }
-const List: FC<ListProps> = ({todos}) => {
+const List: FC<ListProps> = ({todos, deleteTodo}) => {
 
     return (
       <ul>
         {
           todos.map((todo, index) => {
             return (
-                <Item content={todo.content} />
+                <Item content={todo.content} id={todo.id} key={todo.id} deleteTodo={deleteTodo}/>
             )
           })
         }
